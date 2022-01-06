@@ -1,0 +1,44 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12">
+
+            <button class="btn btn-outline-primary" [routerLink]="['/']">Anketlere Geri Dön</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="card mt-3">
+                <div class="card-header">
+                    <h4>{{secKayit.baslik}}</h4>
+                </div>
+                <div class="card-body">
+                    <div [innerHTML]="secKayit.icerik"></div>
+                    <hr>
+                    <h5><b>Oylar</b></h5>
+                    <p>A:{{secKayit.cevap1}} B:{{secKayit.cevap2}} C:{{secKayit.cevap3}} D:{{secKayit.cevap4}}</p>
+                    <hr>
+                    <div class="form-group">
+                        <label>Cevap Seçiniz</label>
+                        <select name="secim" class="form-control" id="" [(ngModel)]="secilen">
+                          <option value="A">A <b>{{secKayit.cevap1}}</b></option>
+                          <option value="B">B <b>{{secKayit.cevap2}}</b></option>
+                          <option value="C">C <b>{{secKayit.cevap3}}</b></option>
+                          <option value="D">D <b>{{secKayit.cevap4}}</b></option>
+                        </select>
+                    </div>
+
+                    <button class="btn btn-primary" (click)="OyVer()">Oyla</button>
+                    <button class="btn btn-outline-warning btn-sm ml-3" *ngIf="secKayit.uid == uid" [routerLink]="['/kayitduzenle',secKayit.key]">Düzenle</button>
+                    <button class="btn btn-outline-danger btn-sm ml-3" *ngIf="secKayit.uid == uid" [routerLink]="['/kayitsil',secKayit.key]">Sil</button>
+                </div>
+                <div class="card-footer">
+
+                    <b>Eklenme Tarihi :</b>{{secKayit.kayTarih | date:'dd.MM.yyyy HH:mm:ss'}} <br>
+                    <b>Düzenlenme Tarihi :</b>{{secKayit.duzTarih | date:'dd.MM.yyyy HH:mm:ss'}} <br>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
